@@ -1,9 +1,9 @@
 import React from 'react';
 import Position from './Position';
 import isKeyPoint from './keyPoint';
-//import './symbols.css';
 import { board } from './styles';
 import dimensions from './dimensions';
+//import './symbols.css';
 
 let {
   cellWidht,

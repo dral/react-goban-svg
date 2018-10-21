@@ -41,3 +41,48 @@ const App = () => (
 render(<App />, document.getElementById('root'));
 ```
 ![Sample board](./demo/board.svg)
+
+## styles
+
+default styles (can be overriden) by custom css:
+
+```css
+.line {
+  fill: none;
+  stroke: #000000;
+  stroke-width: 1;
+}
+
+.keypointDot {
+  fill: #000000;
+  stroke: none;
+}
+
+.board {
+  fill: #F2F2F2;
+  stroke: none;
+}
+
+.whiteStone {
+  fill: #FAFAFA;
+  stroke: #888888;
+  stroke-width: 0.3;
+}
+
+.blackStone {
+  fill: #303030;
+  stroke: #000000;
+  stroke-width: 0.3;
+}
+
+.annotation {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 100;
+  font-size: 12px;
+  cursor: default;
+}
+
+.light {
+  fill: #FAFAFA;
+}
+```
