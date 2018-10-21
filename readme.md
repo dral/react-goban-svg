@@ -1,11 +1,11 @@
-# react-goban
+# react-goban-svg
 
 React goban (go game board) component.
 
 ```js
 import React from 'react';
 import { render} from 'react-dom';
-import Goban from 'react-goban';
+import Goban from 'react-goban-svg';
 
 let white = 'W';
 let black = 'B';

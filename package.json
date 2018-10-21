@@ -1,5 +1,5 @@
 {
-  "name": "react-goban",
+  "name": "react-goban-svg",
   "version": "0.1.0",
   "description": "React goban component",
   "main": "./distribution/index.js",
@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dral/react-goban.git"
+    "url": "git+https://github.com/dral/react-goban-svg.git"
   },
   "keywords": [
     "react",
@@ -22,9 +22,9 @@
   "author": "Draltan MARIN <moi@draltan.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/dral/react-goban/issues"
+    "url": "https://github.com/dral/react-goban-svg/issues"
   },
-  "homepage": "https://github.com/dral/react-goban#readme",
+  "homepage": "https://github.com/dral/react-goban-svg#readme",
   "dependencies": {},
   "peerDependencies": {
     "react": "^15.0.0 || ^16.0.0"
