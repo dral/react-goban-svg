@@ -1,55 +1,58 @@
 import React from 'react';
 import { render} from 'react-dom';
 import Goban from '../src';
+import { values } from '../src/Stone';
 
-let [w, b] = ['W', 'B'];
+let {white, black, empty} = values;
 
 let data = [
-  [null,null,null,w,null,null,null,w,null,null,null,w,null,null,null,w, null,null,null,w],
-  [null,b,null,null,null,b,null,null,null,b,null,null,null,b,null,null, null,b,null,null],
-  [null,null,w,null,null,null,w,null,null,null,w,null,null,null,w,null, null,null,w,null],
-  [null,b,null,w,null,b,null,w,null,b,null,w,null,b,null,w, null,b,null,w],
-  [null,null,null,w,null,null,null,w,null,null,null,w,null,null,null,w, null,null,null,w],
-  [null,b,null,null,null,b,null,null,null,b,null,null,null,b,null,null, null,b,null,null],
-  [null,null,w,null,null,null,w,null,null,null,w,null,null,null,w,null, null,null,w,null],
-  [null,b,null,w,null,b,null,w,null,b,null,w,null,b,null,w, null,b,null,w],
-  [null,null,null,w,null,null,null,w,null,null,null,w,null,null,null,w, null,null,null,w],
-  [null,b,null,null,null,b,null,null,null,b,null,null,null,b,null,null, null,b,null,null],
-  [null,null,w,null,null,null,w,null,null,null,w,null,null,null,w,null, null,null,w,null],
-  [null,b,null,w,null,b,null,w,null,b,null,w,null,b,null,w, null,b,null,w],
-  [null,null,null,w,null,null,null,w,null,null,null,w,null,null,null,w, null,null,null,w],
-  [null,b,null,null,null,b,null,null,null,b,null,null,null,b,null,null, null,b,null,null],
-  [null,null,w,null,null,null,w,null,null,null,w,null,null,null,w,null, null,null,w,null],
-  [null,b,null,w,null,b,null,w,null,b,null,w,null,b,null,w, null,b,null,w],
-  [null,null,null,w,null,null,null,w,null,null,null,w,null,null,null,w, null,null,null,w],
-  [null,b,null,null,null,b,null,null,null,b,null,null,null,b,null,null, null,b,null,null],
-  [null,null,w,null,null,null,w,null,null,null,w,null,null,null,w,null, null,null,w,null],
+  [empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty],
+  [empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty],
+  [empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty],
+  [empty, empty, empty, white, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, white, empty, empty, empty],
+  [empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty],
+  [empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty],
+  [empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty],
+  [empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty],
+  [empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty],
+  [empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty],
+  [empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty],
+  [empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty],
+  [empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty],
+  [empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty],
+  [empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty],
+  [empty, empty, black, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, black, empty, empty, empty],
+  [empty, empty, empty, empty, empty, empty, empty, empty, black, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty],
+  [empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty],
+  [empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty],
 ];
 
 let labels = [
-  ['long',null,null,null,'long',null,null,null,'long',null,null,null,'long',null,null,null,],
-  ['1',null,null,null,'1',null,null,null,'1',null,null,null,'1',null,null,null,],
-  [null,null,'A',null,null,null,'A',null,null,null,'A',null,null,null,'A',null,],
-  [null,'42','╳',null,null,'42','╳',null,null,'42','╳',null,null,'42','╳',null,],
-  ['long',null,null,null,'long',null,null,null,'long',null,null,null,'long',null,null,null,],
-  ['1',null,null,null,'1',null,null,null,'1',null,null,null,'1',null,null,null,],
-  [null,null,'A',null,null,null,'A',null,null,null,'A',null,null,null,'A',null,],
-  [null,'42','╳',null,null,'42','╳',null,null,'42','╳',null,null,'42','╳',null,],
-  ['long',null,null,null,'long',null,null,null,'long',null,null,null,'long',null,null,null,],
-  ['1',null,null,null,'1',null,null,null,'1',null,null,null,'1',null,null,null,],
-  [null,null,'A',null,null,null,'A',null,null,null,'A',null,null,null,'A',null,],
-  [null,'42','╳',null,null,'42','╳',null,null,'42','╳',null,null,'42','╳',null,],
-  ['long',null,null,null,'long',null,null,null,'long',null,null,null,'long',null,null,null,],
-  ['1',null,null,null,'1',null,null,null,'1',null,null,null,'1',null,null,null,],
-  [null,null,'A',null,null,null,'A',null,null,null,'A',null,null,null,'A',null,],
-  [null,'42','╳',null,null,'42','╳',null,null,'42','╳',null,null,'42','╳',null,],
-  ['long',null,null,null,'long',null,null,null,'long',null,null,null,'long',null,null,null,],
-  ['1',null,null,null,'1',null,null,null,'1',null,null,null,'1',null,null,null,],
-  [null,null,'A',null,null,null,'A',null,null,null,'A',null,null,null,'A',null,],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
 ];
 
+labels[5][2] = 'A';
+
 const App = () => (
-  <Goban height='400px' rows={19} cols={19} data={data} labels={labels}/>
+  <Goban width='700px' rows={19} cols={19} data={data} labels={labels}/>
 );
 
 render(<App />, document.getElementById('root'));

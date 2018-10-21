@@ -1,6 +1,7 @@
 .line {
   fill: none;
   stroke: #000000;
+  stroke-width: 0.5;
 }
 
 .keypointDot {
@@ -16,17 +17,19 @@
 .whiteStone {
   fill: #FAFAFA;
   stroke: #888888;
+  stroke-width: 0.3;
 }
 
 .blackStone {
   fill: #303030;
   stroke: #000000;
+  stroke-width: 0.3;
 }
 
 .annotation {
   font-family: 'Roboto', sans-serif;
   font-weight: 100;
-  font-size: 1.6em;
+  font-size: 12px;
   cursor: default;
 }
 

@@ -1,33 +1,24 @@
 import React from 'react';
-import Intersection from './Intersection';
+import Position from './Position';
+import isKeyPoint from './keyPoint';
+import './symbols.css';
+import dimensions from './dimensions';
 
-const isKeyPoint = (i, j, rows, cols) => {
-  if (rows !== cols) return false; // custom size
-
-  let tengenLine = (rows - 1)/2;
-  let hoshiLine = (rows < 13) ? 2: 3;
-  let itengen = (i === tengenLine);
-  let jtengen = (j === tengenLine);
-  let ihoshi = (i === hoshiLine || i === rows - 1 - hoshiLine);
-  let jhoshi = (j === hoshiLine || j === rows - 1 - hoshiLine);
-
-  // tengen
-  if (itengen && jtengen) return true;
-  // corner hoshi
-  if (ihoshi && jhoshi) return true;
-  // side hoshi
-  if (rows > 13 && ((ihoshi && jtengen) || (jhoshi && itengen))) return true;
-  return false;
-};
+let {
+  cellWidht,
+  cellLength,
+} = dimensions;
 
 const Goban = ({
   cols = 19,
   rows = 19,
-  click = console.log,
-  width,
-  height,
+  click = () => {},
   data,
   labels,
+  version='1.1',
+  baseProfile='full',
+  xmlns='http://www.w3.org/2000/svg',
+  ...props
 }) => {
   if (!data) {
     data = [];
@@ -41,26 +32,25 @@ const Goban = ({
       labels[i] = [];
     }
   }
+  props = {version, baseProfile, xmlns, ...props};
   let rowArray = [];
-  let side = 1;
   for (let i=0; i < rows; i++) {
     let cellArray = [ ];
     for (let j=0; j < cols; j++){
       cellArray.push(
         <g
           id={`point_${i+1}_${j+1}`}
-          transform={`translate(${j*side},${i*side})`}
+          transform={`translate(${j*cellWidht},${i*cellLength})`}
           key={`${i}:${j}`}
         >
-          <Intersection
+          <Position
             top={i === 0}
             bottom={i === (rows-1)}
             left={j === 0}
             right={j === (cols-1)}
             keypoint={isKeyPoint(i,j, rows, cols)}
             onClick={() => click(i, j)}
-            side={side}
-            colour={data[i][j]}
+            color={data[i][j]}
             isLabeled={labels[i][j]}
             label={labels[i][j]}
           />
@@ -76,21 +66,23 @@ const Goban = ({
       </g>
     );
   }
-  const margin = side/2;
+  const marginX = cellWidht / 2;
+  const marginY = cellLength / 2;
   return (
     <svg
-      viewBox={`-${margin} -${margin} ${cols*side + 2*margin} ${rows*side + 2*margin }`}
-      width={width}
-      height={height}
+      {...props}
+      viewBox={`-${marginX} -${marginY} ${cols * cellWidht + 2 * marginX} ${rows * cellLength + 2 * marginY }`}
     >
       <rect className="board"
-        x={-margin} y={-margin}
-        width={cols*side + 2*margin}
-        height={rows*side + 2*margin}
+        fill='#F2F2F2'
+        stroke='none'
+        x={-marginX} y={-marginY}
+        width={cols * cellWidht + 2 * marginX}
+        height={rows * cellLength + 2 * marginY}
       />
       { rowArray }
     </svg>
   );
-}
+};
 
 export default Goban;

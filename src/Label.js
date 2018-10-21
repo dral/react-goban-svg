@@ -1,36 +1,35 @@
 import React from 'react';
-import './symbols.css';
-/**
-  List of graphical Symbols. To be included in the svg definition.
-  All units are considered in a 50x50 box centered in the middle point (-25x-25 to 25x25).
-*/
+import dimensions from './dimensions';
 
-const size = 50;
-const viewBox = `${-size/2} ${-size/2} ${size} ${size}`;
+let {
+  cellWidht,
+  cellLength,
+} = dimensions;
 
-export const Label = ({
+const viewBox = `${-cellWidht/2} ${-cellLength/2} ${cellWidht} ${cellLength}`;
+
+const Label = ({
   label,
-  side = 1,
-  colour,
+  color,
 }) => {
   // let longLabel = label.length > 5;
   return (
     <svg
       viewBox={viewBox}
-      width={side}
-      height={side}
+      width={cellWidht}
+      height={cellLength}
     >
       <text
         x="0"
         y="0"
         textAnchor='middle'
         alignmentBaseline='central'
-        className={colour === 'B' ? 'annotation light': 'annotation'}
+        className={color === 'B' ? 'annotation light': 'annotation'}
       >{label}</text>
     </svg>
   );
 };
 
-
+export default Label;
 // lengthAdjust={longLabel && 'spacingAndGlyphs'}
 // textLength={longLabel && size*annotationBlank}
