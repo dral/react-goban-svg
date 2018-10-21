@@ -3,7 +3,7 @@ import { Corner } from './Corner';
 import { Side } from './Side';
 import { Cross, KeyPoint } from './Cross';
 import { Stone } from './Stone';
-
+import { Label } from './Label';
 const Intersection = (props) => {
   let {
     top,
@@ -13,7 +13,8 @@ const Intersection = (props) => {
     keypoint,
     colour,
     onClick,
-    side = 1
+    side = 1,
+    isLabeled,
   } = props;
 
   let cell;
@@ -31,16 +32,17 @@ const Intersection = (props) => {
   return (
     <g onClick={onClick}>
       <rect
-        fill="#000"
-        opacity="0"
-        stroke="none"
-        x="0"
-        y="0"
+        fill='#000'
+        opacity='0'
+        stroke='none'
+        x='0'
+        y='0'
         width={side}
         height={side}
       />
       {cell}
       {colour && <Stone {...props}/>}
+      {isLabeled && <Label {...props}/>}
     </g>
   );
 };

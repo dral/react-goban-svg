@@ -18,20 +18,27 @@ const isKeyPoint = (i, j, rows, cols) => {
   // side hoshi
   if (rows > 13 && ((ihoshi && jtengen) || (jhoshi && itengen))) return true;
   return false;
-}
+};
 
 const Goban = ({
   cols = 19,
   rows = 19,
-  click = (i,j) => { console.log(i+1,j+1)},
+  click = console.log,
   width,
   height,
   data,
+  labels,
 }) => {
   if (!data) {
     data = [];
     for (let i=0;i<rows;i++){
       data[i] = [];
+    }
+  }
+  if (!labels) {
+    labels = [];
+    for (let i=0;i<rows;i++){
+      labels[i] = [];
     }
   }
   let rowArray = [];
@@ -44,7 +51,7 @@ const Goban = ({
           id={`point_${i+1}_${j+1}`}
           transform={`translate(${j*side},${i*side})`}
           key={`${i}:${j}`}
-          >
+        >
           <Intersection
             top={i === 0}
             bottom={i === (rows-1)}
@@ -54,7 +61,9 @@ const Goban = ({
             onClick={() => click(i, j)}
             side={side}
             colour={data[i][j]}
-            />
+            isLabeled={labels[i][j]}
+            label={labels[i][j]}
+          />
         </g>
       );
     }
@@ -73,12 +82,12 @@ const Goban = ({
       viewBox={`-${margin} -${margin} ${cols*side + 2*margin} ${rows*side + 2*margin }`}
       width={width}
       height={height}
-      >
+    >
       <rect className="board"
         x={-margin} y={-margin}
         width={cols*side + 2*margin}
         height={rows*side + 2*margin}
-        />
+      />
       { rowArray }
     </svg>
   );

@@ -22,3 +22,14 @@
   fill: #303030;
   stroke: #000000;
 }
+
+.annotation {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 100;
+  font-size: 1.6em;
+  cursor: default;
+}
+
+.light {
+  fill: #FAFAFA;
+}
