@@ -1,8 +1,20 @@
 import React from 'react';
-import { Corner, Side, Cross, KeyPoint, Stone } from './Symbols';
+import { Corner } from './Corner';
+import { Side } from './Side';
+import { Cross, KeyPoint } from './Cross';
+import { Stone } from './Stone';
 
 const Intersection = (props) => {
-  let {top, bottom, right, left, keypoint, colour, onClick, side = 1} = props;
+  let {
+    top,
+    bottom,
+    right,
+    left,
+    keypoint,
+    colour,
+    onClick,
+    side = 1
+  } = props;
 
   let cell;
   if ((top && left) || (top && right) || (bottom && left) || (bottom && right)) {
@@ -15,9 +27,18 @@ const Intersection = (props) => {
     cell = <Cross {...props}/>;
   }
 
+  // Note: `fill: none` will not capture clicks arround the intersection
   return (
     <g onClick={onClick}>
-      <rect fill="#000000" opacity="0" stroke="none" x="0" y="0" width={side} height={side}/>
+      <rect
+        fill="#000"
+        opacity="0"
+        stroke="none"
+        x="0"
+        y="0"
+        width={side}
+        height={side}
+      />
       {cell}
       {colour && <Stone {...props}/>}
     </g>
