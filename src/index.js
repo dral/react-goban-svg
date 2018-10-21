@@ -1,7 +1,8 @@
 import React from 'react';
 import Position from './Position';
 import isKeyPoint from './keyPoint';
-import './symbols.css';
+//import './symbols.css';
+import { board } from './styles';
 import dimensions from './dimensions';
 
 let {
@@ -66,16 +67,17 @@ const Goban = ({
       </g>
     );
   }
-  const marginX = cellWidht / 2;
-  const marginY = cellLength / 2;
+  let marginX = cellWidht / 2;
+  let marginY = cellLength / 2;
+  let width = cols * cellWidht + 2 * marginX;
+  let height = rows * cellLength + 2 * marginY;
   return (
     <svg
       {...props}
-      viewBox={`-${marginX} -${marginY} ${cols * cellWidht + 2 * marginX} ${rows * cellLength + 2 * marginY }`}
+      viewBox={`-${marginX} -${marginY} ${width} ${height}`}
     >
       <rect className="board"
-        fill='#F2F2F2'
-        stroke='none'
+        {...board}
         x={-marginX} y={-marginY}
         width={cols * cellWidht + 2 * marginX}
         height={rows * cellLength + 2 * marginY}

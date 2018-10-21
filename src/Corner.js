@@ -1,8 +1,8 @@
 import React from 'react';
 import dimensions from './dimensions';
+import { line } from './styles';
 
 let {
-  lineSize,
   cellWidht,
   cellLength,
 } = dimensions;
@@ -31,8 +31,8 @@ const PlainCorner = ({
       height={cellLength}
     >
       <g transform={transform}>
-        <line className='line' strokeWidth={lineSize} x1="0" y1="0" x2={`${width/2}`} y2="0"/>
-        <line className='line' strokeWidth={lineSize} x1="0" y1="0" x2="0" y2={`${length/2}`}/>
+        <line className='line' {...line} x1="0" y1="0" x2={`${width/2}`} y2="0"/>
+        <line className='line' {...line} x1="0" y1="0" x2="0" y2={`${length/2}`}/>
       </g>
     </svg>
   );
@@ -59,8 +59,8 @@ const EmptyCorner = ({
       height={cellLength}
     >
       <g transform={transform}>
-        <line className='line' strokeWidth={lineSize} x1={`${annotationBlank*width/2}`} y1="0" x2={`${width/2}`} y2="0"/>
-        <line className='line' strokeWidth={lineSize} x1="0" y1={`${annotationBlank*length/2}`} x2="0" y2={`${length/2}`}/>
+        <line className='line' {...line} x1={`${annotationBlank*width/2}`} y1="0" x2={`${width/2}`} y2="0"/>
+        <line className='line' {...line} x1="0" y1={`${annotationBlank*length/2}`} x2="0" y2={`${length/2}`}/>
       </g>
     </svg>
   );

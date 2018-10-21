@@ -1,5 +1,6 @@
 import React from 'react';
 import dimensions from './dimensions';
+import {annotation, light} from './styles';
 
 let {
   cellWidht,
@@ -13,6 +14,7 @@ const Label = ({
   color,
 }) => {
   // let longLabel = label.length > 5;
+  let style = color === 'B' ? {...annotation, ...light}: annotation;
   return (
     <svg
       viewBox={viewBox}
@@ -25,6 +27,7 @@ const Label = ({
         textAnchor='middle'
         alignmentBaseline='central'
         className={color === 'B' ? 'annotation light': 'annotation'}
+        {...style}
       >{label}</text>
     </svg>
   );

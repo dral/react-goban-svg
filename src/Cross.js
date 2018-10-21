@@ -1,8 +1,8 @@
 import React from 'react';
 import dimensions from './dimensions';
+import {line} from './styles';
 
 let {
-  lineSize,
   cellWidht,
   cellLength,
   keyPointDiameter,
@@ -15,8 +15,8 @@ const PlainCross = (props) => (
   <svg viewBox={viewBox}
     {...props}
   >
-    <line className='line' strokeWidth={lineSize} x1='0' y1={`${-cellLength/2}`} x2='0' y2={`${cellLength/2}`}/>
-    <line className='line' strokeWidth={lineSize} x1={`${-cellWidht/2}`} y1='0' x2={`${cellWidht/2}`} y2='0'/>
+    <line className='line' {...line} x1='0' y1={`${-cellLength/2}`} x2='0' y2={`${cellLength/2}`}/>
+    <line className='line' {...line} x1={`${-cellWidht/2}`} y1='0' x2={`${cellWidht/2}`} y2='0'/>
   </svg>
 );
 
@@ -24,10 +24,10 @@ const EmptyCross = (props) => (
   <svg viewBox={viewBox}
     {...props}
   >
-    <line className='line' strokeWidth={lineSize} x1={`${annotationBlank*cellWidht/2}`} y1='0' x2={`${cellWidht/2}`} y2='0'/>
-    <line className='line' strokeWidth={lineSize} x1='0' y1={`${annotationBlank*cellLength/2}`} x2='0' y2={`${cellLength/2}`}/>
-    <line className='line' strokeWidth={lineSize} x1={`${-cellWidht/2}`} y1='0' x2={`${-annotationBlank*cellWidht/2}`} y2='0'/>
-    <line className='line' strokeWidth={lineSize} x1='0' y1={`${-cellLength/2}`} x2='0' y2={`${-annotationBlank*cellLength/2}`}/>
+    <line className='line' {...line} x1={`${annotationBlank*cellWidht/2}`} y1='0' x2={`${cellWidht/2}`} y2='0'/>
+    <line className='line' {...line} x1='0' y1={`${annotationBlank*cellLength/2}`} x2='0' y2={`${cellLength/2}`}/>
+    <line className='line' {...line} x1={`${-cellWidht/2}`} y1='0' x2={`${-annotationBlank*cellWidht/2}`} y2='0'/>
+    <line className='line' {...line} x1='0' y1={`${-cellLength/2}`} x2='0' y2={`${-annotationBlank*cellLength/2}`}/>
   </svg>
 );
 
@@ -35,8 +35,8 @@ const DottedCross = (props) => (
   <svg viewBox={viewBox}
     {...props}
   >
-    <line className='line' strokeWidth={lineSize} x1='0' y1={`${-cellLength/2}`} x2='0' y2={`${cellLength/2}`}/>
-    <line className='line' strokeWidth={lineSize} x1={`${-cellWidht/2}`} y1='0' x2={`${cellWidht/2}`} y2='0'/>
+    <line className='line' {...line} x1='0' y1={`${-cellLength/2}`} x2='0' y2={`${cellLength/2}`}/>
+    <line className='line' {...line} x1={`${-cellWidht/2}`} y1='0' x2={`${cellWidht/2}`} y2='0'/>
     <circle className='keypointDot' cx='0' cy='0' r={keyPointDiameter / 2}/>
   </svg>
 );

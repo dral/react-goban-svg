@@ -3,56 +3,26 @@ import { render} from 'react-dom';
 import Goban from '../src';
 import { values } from '../src/Stone';
 
-let {white, black, empty} = values;
+let {white, black} = values;
+let data = [];
+let labels = [];
 
-let data = [
-  [empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty],
-  [empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty],
-  [empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty],
-  [empty, empty, empty, white, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, white, empty, empty, empty],
-  [empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty],
-  [empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty],
-  [empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty],
-  [empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty],
-  [empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty],
-  [empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty],
-  [empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty],
-  [empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty],
-  [empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty],
-  [empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty],
-  [empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty],
-  [empty, empty, black, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, black, empty, empty, empty],
-  [empty, empty, empty, empty, empty, empty, empty, empty, black, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty],
-  [empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty],
-  [empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty],
-];
+for (let i = 0; i < 19; i++){
+  data[i] = [];
+  labels[i] = [];
+}
 
-let labels = [
-  [],
-  [],
-  [],
-  [],
-  [],
-  [],
-  [],
-  [],
-  [],
-  [],
-  [],
-  [],
-  [],
-  [],
-  [],
-  [],
-  [],
-  [],
-  [],
-];
+data[3][3] = black;
+data[3][15] = white;
+data[16][3] = black;
+data[15][15] = white;
+data[2][13] = black;
 
-labels[5][2] = 'A';
+labels[2][11] = 'A';
+labels[5][16] = 'B';
 
 const App = () => (
-  <Goban width='700px' rows={19} cols={19} data={data} labels={labels}/>
+  <Goban rows={19} cols={19} data={data} labels={labels} click={console.log}/>
 );
 
 render(<App />, document.getElementById('root'));
